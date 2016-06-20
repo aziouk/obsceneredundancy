@@ -29,7 +29,7 @@ i.e. 3datacentres x 3 = 9 redundant copies.
 
 #### Links and Email
 
-For comments and requests concerning this project please contact <adam@haxed.me.uk>.
+For comments and requests concerning this project please open an issue, my email is redacted to prevent spam.
 
 #### SUPPORTED REGIONS
 
