@@ -1,8 +1,10 @@
-# ObsceneRedundancy
+# Obscene Redundancy
 
 ![Mou icon](http://i.imgur.com/sccHXFt.jpg)
 
 ## Overview
+
+! `WARNING Please note that this script utilizes publicnetwork interface and that bandwidth charges will apply. Ask Rackspace if you do not understand what this means to avoid increased bandwidth bills` !
 
 Obscene redundancy is a lightweight **backup script** written in BASH which utilizes **Rackspace Cloud Files** to back up a local filesystem on a cloud server to multiple cloud files endpoints in multiple datacentres achieving much higher redundancy than is usually available within the Rackspace Cloud Files or Rackspace Cloud Backup driveclient product.
 
@@ -12,7 +14,7 @@ This script ** increases redundancy in an `obscene` way **. `Unless you want 6 o
 
 > cloud files is redundant, but that obscene redundancy thing is disgusting
 
-### GOAL
+### Goal
 
 The goal is to _**increase redundancy**_ up to a theoretical maximum of 18 identical copies. This is what **obscene redundancy** should be. 
 
@@ -42,6 +44,14 @@ Sydney | SYD | Australia
 Hong Kong | HKG | China*
 
 '*' China's special administrative region.
+
+### Cloning Repo & Pre-configuration Set-up
+
+`mkdir -p /root/automation/multi-dc-backup`
+
+`cd /root/automation/multi-dc-backup`
+
+`git clone https://github.com/aziouk/obsceneredundancy`
 
 
 ### Configuration 
@@ -87,5 +97,13 @@ To generate swiftly configs, use
 
 # Generate Swiftly configuration
 `./generate-swiftly-configs.sh`
+
+
+### Running Backup (make sure you configure first)
+
+Presently the nominated directory for the files is '/root/automation/multi-dc-backup'
+
+`./multidcbackup.sh `
+
 
 
