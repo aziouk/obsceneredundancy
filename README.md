@@ -47,9 +47,9 @@ Hong Kong | HKG | China*
 
 ### Cloning Repo & Pre-configuration Set-up
 
-mkdir -p /root/automation/multi-dc-backup
+`mkdir -p /root/automation/multi-dc-backup`
 
-cd /root/automation/multi-dc-backup
+`cd /root/automation/multi-dc-backup`
 
 `git clone https://github.com/aziouk/obsceneredundancy`
 
