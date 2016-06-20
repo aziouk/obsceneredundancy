@@ -45,6 +45,12 @@ Hong Kong | HKG | China*
 
 '*' China's special administrative region.
 
+### Cloning Repo & Pre-configuration Set-up
+
+mkdir -p /root/automation/multi-dc-backup
+cd /root/automation/multi-dc-backup
+`git clone https://github.com/aziouk/obsceneredundancy`
+
 
 ### Configuration 
 
@@ -93,4 +99,8 @@ To generate swiftly configs, use
 
 ### Running Backup (make sure you configure first)
 
+Presently the nominated directory for the files is '/root/automation/multi-dc-backup'
+
 ./multidcbackup.sh 
+
+
