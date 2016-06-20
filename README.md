@@ -90,3 +90,7 @@ To generate swiftly configs, use
 # Generate Swiftly configuration
 `./generate-swiftly-configs.sh`
 
+
+### Running Backup (make sure you configure first)
+
+./multidcbackup.sh 
