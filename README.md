@@ -41,7 +41,7 @@ Dallas Forth Worth | DFW  | United States
 Chicago | ORD | United States
 Norther Virginia | IAD | United States
 Sydney | SYD | Australia
-Hong Kong | HKG | China*
+Hong Kong | HKG | Hong Kong*
 
 '*' China's special administrative region.
 
