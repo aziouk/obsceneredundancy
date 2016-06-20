@@ -14,7 +14,7 @@ This script ** increases redundancy in an `obscene` way **. `Unless you want 6 o
 
 > cloud files is redundant, but that obscene redundancy thing is disgusting
 
-### GOAL
+### Goal
 
 The goal is to _**increase redundancy**_ up to a theoretical maximum of 18 identical copies. This is what **obscene redundancy** should be. 
 
