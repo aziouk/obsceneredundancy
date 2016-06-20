@@ -4,7 +4,7 @@
 
 ## Overview
 
-! WARNING Please note that publicnet is utilized and that bandwidth charges will apply. Ask Rackspace if you do not understand what this means to avoid increased bandwidth bills !
+! `WARNING Please note that this script utilizes publicnetwork interface and that bandwidth charges will apply. Ask Rackspace if you do not understand what this means to avoid increased bandwidth bills` !
 
 Obscene redundancy is a lightweight **backup script** written in BASH which utilizes **Rackspace Cloud Files** to back up a local filesystem on a cloud server to multiple cloud files endpoints in multiple datacentres achieving much higher redundancy than is usually available within the Rackspace Cloud Files or Rackspace Cloud Backup driveclient product.
 
