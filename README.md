@@ -4,6 +4,8 @@
 
 ## Overview
 
+! WARNING Please note that publicnet is utilized and that bandwidth charges will apply.
+
 Obscene redundancy is a lightweight **backup script** written in BASH which utilizes **Rackspace Cloud Files** to back up a local filesystem on a cloud server to multiple cloud files endpoints in multiple datacentres achieving much higher redundancy than is usually available within the Rackspace Cloud Files or Rackspace Cloud Backup driveclient product.
 
 This script ** increases redundancy in an `obscene` way **. `Unless you want 6 or more copies of your data on multiple disks within multiple datacentres you might actually find Cloud files already does what you need already`. By default Cloud files keeps 3 copies of the file.
