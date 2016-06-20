@@ -103,6 +103,6 @@ To generate swiftly configs, use
 
 Presently the nominated directory for the files is '/root/automation/multi-dc-backup'
 
-./multidcbackup.sh 
+`./multidcbackup.sh `
 
 
