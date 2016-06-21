@@ -107,8 +107,7 @@ You will require your `mycloud primary username` (used to login to control panel
 To generate swiftly configs, use
 
 # Generate Swiftly configuration
-`./generate-swiftly-configs.sh`
-
+`./makeconfigs.sh`
 
 ### Running Backup (make sure you configure first)
 
