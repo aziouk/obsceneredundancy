@@ -26,7 +26,7 @@ NUMBER_OF_DATACENTRES * 3 = TOTAL_REDUNDANT_COPIES
 
 i.e. 3datacentres x 3 = 9 redundant copies.
 
-#### Dependancies
+#### Dependencies
 
 The application only has a few dependencies which are:
 
