@@ -95,39 +95,65 @@ sydsize=$(swiftly --conf swiftly-configs/swiftly-syd.conf head "/$BACKUP_DEST/$B
 filesizeondisk=$(ls -al "/var/backup/$BACKUP_NAME-$BACKUP_DATE-$UUID.tar.gz" | awk '{print $5}')
 
 printf "\n\n\n"
+rm listbackups.txt
 
 if [ "$lonsize" -eq "$filesizeondisk" ] 
 	then
 	echo "ORD: COMPLETED OK $lonsize/$filesizeondisk"
+	echo "ORD: COMPLETED OK $lonsize/$filesizeondisk" >> listbackups.txt
 else
 	echo "ORD: NOT COMPLETED $lonsize/$filesizeondisk"
+        echo "ORD: NOT COMPLETED $lonsize/$filesizeondisk" >> listbackups.txt
 fi
 
 if [ "$iadsize" -eq "$filesizeondisk" ]
 	then
 	echo "IAD: COMPLETED OK $iadsize/$filesizeondisk"
+	echo "IAD: COMPLETED OK $iadsize/$filesizeondisk" >> listbackups.txt
+
 else
 	echo "IAD: NOT COMPLETED $iadsize/$filesizeondisk"
+	echo "IAD: NOT COMPLETED $iadsize/$filesizeondisk" >> listbackups.txt
 fi
 
 if [ "$dfwsize" -eq "$filesizeondisk" ]
 	then
 	echo "DFW: COMPLETED OK $dfwsize/$filesizeondisk"
+	echo "DFW: COMPLETED OK $dfwsize/$filesizeondisk" >> listbackups.txt
 else
 	echo "DFW: NOT COMPLETED $dfwsize/$filesizeondisk"
+	echo "DFW: NOT COMPLETED $dfwsize/$filesizeondisk" >> listbackups.txt
 fi
 
 if [ "$ordsize" -eq "$filesizeondisk" ]
 	then
 	echo "ORD: COMPLETED OK $ordsize/$filesizeondisk"
+	echo "ORD: COMPLETED OK $ordsize/$filesizeondisk" >> listbackups.txt
 else
 	echo "ORD: NOT COMPLETED $ordsize/$filesizeondisk"
+	echo "ORD: NOT COMPLETED $ordsize/$filesizeondisk" >> listbackups.txt
 fi
 
 if [ "$sydsize" -eq "$filesizeondisk" ]
 	then
 	echo "SYD: COMPLETED OK $sydsize/$filesizeondisk"
+	echo "SYD: COMPLETED OK $sydsize/$filesizeondisk" >> listbackups.txt
 else
 	echo "SYD: NOT COMPLETED $sydsize/$filesizeondisk"
+	echo "SYD: NOT COMPLETED $sydsize/$filesizeondisk" >> listbackups.txt
 fi
 
+if [ "$EMAIL_RESULTS" != "false" ]
+then
+echo "not false"
+./listbackups.sh >>  listbackups.txt
+
+HOST=$(hostnamectl --static)
+DATE=$(date +%Y-%M-%d)
+
+
+mail -s "Obscene Backup Report: $DATE" -r "obscenebackup@$HOST" "$EMAIL_RESULTS" < listbackups.txt
+
+else
+	echo "equal false"
+fi

@@ -14,8 +14,6 @@ mkdir -p tmp
 touch tmp/file.txt
 
 
-echo $BACKUP_TO_DFW 
-
 if [[ "$BACKUP_TO_LON" -eq 1 && -f "swiftly-configs/swiftly-lon.conf" ]]
 then
 echo "London Backup Files.."
