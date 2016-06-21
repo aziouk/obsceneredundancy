@@ -118,6 +118,8 @@ Hong Kong | HKG | Hong Kong*
 
 The multidbackup script will copy files from BACKUP_SRC and tar them into a /var/backup folder before uploading to cloud files. (In later versions the goal is to pipe tar directly to the API without writing to disk). The script then checks the filesizeondisk with the files uploaded to Cloud Files to ensure absolutely the file was uploaded, and is capable of sending email reports for the backup.
 
+## Backup Output & Validation & Email Support
+
 Output Looks like
 
 ORD: COMPLETED OK 15504669/15504669
