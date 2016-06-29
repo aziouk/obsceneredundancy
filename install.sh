@@ -2,11 +2,6 @@
 
 # This script installs the dependencies required for using swiftly
 
-yum install python-devel
-yum install python-pip
-
-pip install swiftly
-
 isyum=$(command -v yum)
 isapt=$(command -v apt-get)
 
@@ -23,5 +18,3 @@ if [ -n "$isapt" ]
 		apt-get install python-pip
 		pip install swiftly
 fi
-
-
