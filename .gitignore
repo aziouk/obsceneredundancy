@@ -1,2 +1,4 @@
-swiftly-config*
-tmp*
+swiftly-config/*
+tmp/*
+listbackups.txt
+listbackup.txt
