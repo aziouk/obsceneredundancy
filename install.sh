@@ -1,27 +1,11 @@
 #!/bin/bash
 
-# This script installs the dependencies required for using swiftly
+# Create base dir
+if [ ! -d /root/automation/multi-dc-backup ]; then
+    mkdir -p /root/automation/multi-dc-backup/swiftly-configs
+fi
 
-yum install python-devel
-yum install python-pip
-
+# Install Packages
+python -mplatform | egrep -i 'debian|ubuntu' 2>&1 > /dev/null && apt-get install python-devel python-pip -y -qq || yum install python-dev python-pip -y -q
 pip install swiftly
-
-isyum=$(command -v yum)
-isapt=$(command -v apt-get)
-
-if [ -n "$isyum" ]
-	then
-		yum install python-devel
-		yum install python-pip
-		pip install swiftly
-fi
-
-if [ -n "$isapt" ]
-	then
-		apt-get install python-dev
-		apt-get install python-pip
-		pip install swiftly
-fi
-
-
+/root/automation/multi-dc-backup
