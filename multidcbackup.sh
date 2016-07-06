@@ -34,17 +34,39 @@ for REGION in BACKUP_TO_SYD BACKUP_TO_LON BACKUP_TO_ORD BACKUP_TO_IAD BACKUP_TO_
             printf "\n\nCreating Container in $SHORT_REGION for $BACKUP_DEST\n\n"
             swiftly --conf swiftly-configs/swiftly-${SHORT_REGION,,}.conf put $BACKUP_DEST
 
-            # Perform Backups in All DC Regions (Take 5 Copies) , each copy is 3 x RAID 10
-            # i.e. Equivalent theoretical redundancy (3 x RAID 10) X 5
+            # Perform Backups in All DC Regions (Take 5 Copies) , each DC copy is JBOD 3 
+            # i.e. Equivalent theoretical redundancy (JBOD 3) X 5 = 18 total disk copies
             printf "$SHORT_REGION: Backing up ...\n"
 	        printf "Source: $BACKUP_SRC/ ---> Dest: cloudfiles://$SHORT_REGION/$BACKUP_DEST/$BACKUP_NAME-$BACKUP_DATE-$UUID.tar.gz\n\n"
 	        swiftly --conf swiftly-configs/swiftly-${SHORT_REGION,,}.conf --concurrency 100 put -i "${BACKUP_DIR}/${FILE}" "/${BACKUP_DEST}/${FILE}"
             # Validate Uploaded files match same size of zip on filesystem
             # It's possible to use CRC check with zip files. Need to explore this more.
             cfsize=$(swiftly --conf swiftly-configs/swiftly-${SHORT_REGION,,}.conf head "${BACKUP_DEST}/${FILE}" | grep Content-Length | awk {'print $2'})
-            echo "nospace${cfsize}nospace"
-            echo "on disk"
-            echo "nospace${BACKUP_SIZE}nospace"
+
+            # Validate Cloud File archive CRC against local filesystem, ensuring data is intact at cloud files endpoint.
+	   cfmd5sum=$(swiftly --conf swiftly-configs/swiftly-${SHORT_REGION,,}.conf head "${BACKUP_DEST}/${FILE}" | grep -i Etag | awk '{print $2}')
+           localmd5sum=$(md5sum "$BACKUP_DIR"/"$FILE")
+           
+	   echo "Checking Data integrity of Cloud Files upload to $REGION"
+ 	   echo "Cloud Files Archive MD5:  $cfmd5sum  ....... Local File Archive MD5: $localmd5sum" 
+		
+		if [[ "$cfmd5sum" == "$localmd5sum" ]]; then
+			echo "VALUES EQUAL, (local md5sum length given first)"
+			echo "$localmd5sum"| wc -L
+			echo "$cfmd5sum"| wc -L
+
+			
+			echo "$REGION CRC OK..."
+		else
+			echo "VALUES NOT EQUAL"
+			echo "$localmd5sum"|wc -L
+			echo "$cfmd5sum"|wc -L
+			echo "$REGION CRC missing, in error, or NOT OK..."
+		fi
+
+            # echo "nospace${cfsize}nospace"
+            # echo "on disk"
+            # echo "nospace${BACKUP_SIZE}nospace"
             if [[ "$cfsize" -eq "$BACKUP_SIZE" ]]; then
                 echo "${SHORT_REGION,,}: COMPLETED OK $cfsize/$BACKUP_SIZE" | tee listbackups.txt
             else
