@@ -45,7 +45,7 @@ for REGION in BACKUP_TO_SYD BACKUP_TO_LON BACKUP_TO_ORD BACKUP_TO_IAD BACKUP_TO_
             echo "nospace${cfsize}nospace"
             echo "on disk"
             echo "nospace${BACKUP_SIZE}nospace"
-            if [[ "$cfszie" -eq "$BACKUP_SIZE" ]]; then
+            if [[ "$cfsize" -eq "$BACKUP_SIZE" ]]; then
                 echo "${SHORT_REGION,,}: COMPLETED OK $cfsize/$BACKUP_SIZE" | tee listbackups.txt
             else
                 echo "${SHORT_REGION,,}: NOT COMPLETED $cfsize/$BACKUP_SIZE" | tee listbackups.txt
