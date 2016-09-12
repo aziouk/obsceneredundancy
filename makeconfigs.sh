@@ -62,7 +62,7 @@ do
                     echo "Please type in your cloud API key for accessing Cloud Files"
                     read KEY
                     echo "auth_key = $KEY" >> $FILE
-                    echo "auth_url = https://identity.api.rackspacecloud.com/v2.0" >> "$BASE/swiftly-syd.conf"
+                    echo "auth_url = https://identity.api.rackspacecloud.com/v2.0" >> "$BASE/swiftly-$SHORT_REGION.conf"
                     echo "region = ${SHORT_REGION,,}" >> $FILE
             fi
         else
